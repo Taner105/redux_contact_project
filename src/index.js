@@ -4,16 +4,19 @@ import './index.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import { createStore } from 'redux';
+import { Provider } from "react-redux"
+import contactReducer from './redux/reducers/ContactReducer';
 
-
+const store = createStore(contactReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <Router>
       <App />
     </Router>
 
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
